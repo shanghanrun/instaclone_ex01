@@ -64,7 +64,7 @@ class _InstaHomeState extends State<InstaHome> {
           ),
         ],
       ),
-      body: InstaBody(),
+      body: InstaBody(index: index),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
         onTap: (newIndex) {
