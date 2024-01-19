@@ -49,21 +49,24 @@ class _InstaHomeState extends State<InstaHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Instagram',
-            style: GoogleFonts.lobsterTwo(color: Colors.black, fontSize: 32)),
-        centerTitle: false,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite_outline, size: 32),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(CupertinoIcons.paperplane, size: 32),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      appBar: index == 0
+          ? AppBar(
+              title: Text('Instagram',
+                  style: GoogleFonts.lobsterTwo(
+                      color: Colors.black, fontSize: 32)),
+              centerTitle: false,
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.favorite_outline, size: 32),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(CupertinoIcons.paperplane, size: 32),
+                  onPressed: () {},
+                ),
+              ],
+            )
+          : null, // 혹은 SizeBox()
       body: InstaBody(index: index),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
