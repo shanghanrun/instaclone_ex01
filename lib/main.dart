@@ -49,8 +49,8 @@ class _InstaHomeState extends State<InstaHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: index == 0
-          ? AppBar(
+      appBar: (index == 0 || index ==1)
+                ? AppBar(
               title: Text('Instagram',
                   style: GoogleFonts.lobsterTwo(
                       color: Colors.black, fontSize: 32)),
@@ -78,6 +78,8 @@ class _InstaHomeState extends State<InstaHome> {
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home, size: 30), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.image, size: 30), label: 'page'),
           BottomNavigationBarItem(
               icon: Icon(Icons.search, size: 30), label: 'search'),
         ],

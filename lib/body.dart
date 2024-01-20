@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instaclone_ex01/homescreen.dart';
+import 'package:instaclone_ex01/pagescreen.dart';
 import 'package:instaclone_ex01/searchscreen.dart';
 
 class InstaBody extends StatelessWidget {
@@ -10,9 +11,9 @@ class InstaBody extends StatelessWidget {
   Widget build(BuildContext context) {
     if (index == 0) {
       return HomeScreen();
+    } else if (index == 1) {
+      return PageScreen();
     }
     return SearchScreen();
   }
 }
-
-

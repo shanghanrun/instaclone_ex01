@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class PageScreen extends StatelessWidget {
+  const PageScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -156,48 +156,12 @@ class FeedList extends StatelessWidget {
         itemCount: feedDataList.length,
         itemBuilder: (context, i) {
           final feedData = feedDataList[i];
-          return makeCard(feedData);
+          return FeedItem(feedData: feedData);
         });
   }
 
-  Widget makeProfile(String image, double size) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: Colors.grey),
-        borderRadius: BorderRadius.circular(40.0),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(40.0),
-        child: Image.asset('images/$image.png',
-            width: size, height: size, fit: BoxFit.fill),
-      ),
-    );
-  }
-
-  Card makeCard(FeedData feedData) {
-    return Card(
-      child: ListTile(
-          leading: makeProfile(feedData.image, 40),
-          trailing: SizedBox(
-            width: 70,
-            child: Row(
-              children: [
-                const Icon(Icons.favorite, color: Colors.red),
-                const SizedBox(width: 5),
-                Text(feedData.likeCount.toString()),
-                const Icon(Icons.more_vert),
-              ],
-            ),
-          ),
-          title: Text(
-            feedData.userName,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text(feedData.content)),
-    );
-  }
+  // makeCard(feedData); 로 하게 될 경우 코드
+  // 하지만 제한적이라서 FeedItem(feedData) 위젯으로 만들었다.
 }
 
 class FeedItem extends StatelessWidget {
@@ -300,6 +264,31 @@ class FeedItem extends StatelessWidget {
         child: Image.asset('images/$image.png',
             width: size, height: size, fit: BoxFit.fill),
       ),
+    );
+  }
+
+  // 아래 메소드는 사실 makeProfile()과 함께, FeedList클래스에
+  // 들어가야 되는 것이다. 그냥 임시로 여기에 저장해 둔다.
+  Card makeCard(FeedData feedData) {
+    return Card(
+      child: ListTile(
+          leading: makeProfile(feedData.image, 40),
+          trailing: SizedBox(
+            width: 70,
+            child: Row(
+              children: [
+                const Icon(Icons.favorite, color: Colors.red),
+                const SizedBox(width: 5),
+                Text(feedData.likeCount.toString()),
+                const Icon(Icons.more_vert),
+              ],
+            ),
+          ),
+          title: Text(
+            feedData.userName,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(feedData.content)),
     );
   }
 }
